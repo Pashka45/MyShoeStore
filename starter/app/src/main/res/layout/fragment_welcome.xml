@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <LinearLayout
+        android:id="@+id/welcome_layout"
+        style="@style/fragment_with_text"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:paddingStart="50dp"
+        android:paddingTop="150dp"
+        android:paddingEnd="50dp"
+        tools:context=".WelcomeFragment">
+
+
+        <TextView
+            android:id="@+id/welcome_header_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:text="@string/welcome_to_shoestore_best_shop_in_universe" />
+
+        <TextView
+            android:id="@+id/welcome_desc_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/little_margin"
+            android:text="@string/welcome_fragment_string" />
+
+        <Button
+            android:id="@+id/go_to_instruction_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/big_margin"
+            android:text="@string/ok" />
+    </LinearLayout>
+</layout>
