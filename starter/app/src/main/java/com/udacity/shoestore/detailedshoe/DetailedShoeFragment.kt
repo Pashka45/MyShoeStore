@@ -48,12 +48,6 @@ class DetailedShoeFragment : Fragment() {
             cancelAddingShoe(it)
         }
 
-        viewModel.errorShoeAddingMsg.observe(viewLifecycleOwner, Observer { msg ->
-            if (msg.isNotEmpty()) {
-                Toast.makeText(context, msg, Toast.LENGTH_SHORT).show()
-            }
-        })
-
         return binding.root
     }
 
