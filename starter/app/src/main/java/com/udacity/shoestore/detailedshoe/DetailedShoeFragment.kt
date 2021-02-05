@@ -5,19 +5,24 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import com.google.android.material.snackbar.Snackbar
 import com.udacity.shoestore.R
 import com.udacity.shoestore.shoelist.ShoeListViewModel
 import com.udacity.shoestore.databinding.FragmentDetailedShoeBinding
 import com.udacity.shoestore.models.Shoe
+import timber.log.Timber
 
 class DetailedShoeFragment : Fragment() {
 
     private lateinit var binding: FragmentDetailedShoeBinding
 
-    private lateinit var viewModel: ShoeListViewModel
+    private val viewModel: ShoeListViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -26,8 +31,14 @@ class DetailedShoeFragment : Fragment() {
         // Inflate the layout for this fragment
 
         binding =
-            DataBindingUtil.inflate(inflater,
-                R.layout.fragment_detailed_shoe, container, false)
+            DataBindingUtil.inflate(
+                inflater,
+                R.layout.fragment_detailed_shoe, container, false
+            )
+
+        binding.lifecycleOwner = this
+
+        binding.shoe = Shoe("", 0.0, "", "")
 
         binding.addBtn.setOnClickListener {
             addShoe(it)
@@ -36,6 +47,12 @@ class DetailedShoeFragment : Fragment() {
         binding.cancelBtn.setOnClickListener {
             cancelAddingShoe(it)
         }
+
+        viewModel.errorShoeAddingMsg.observe(viewLifecycleOwner, Observer { msg ->
+            if (msg.isNotEmpty()) {
+                Toast.makeText(context, msg, Toast.LENGTH_SHORT).show()
+            }
+        })
 
         return binding.root
     }
@@ -51,8 +68,8 @@ class DetailedShoeFragment : Fragment() {
         }
 
         val size = binding.shoeSizeBtn.text.toString().toDoubleOrNull()
-        if (size == null) {
-            Snackbar.make(view, "Shoe size is empty or not a number", Snackbar.LENGTH_LONG)
+        if (size == null || size <= 0.0) {
+            Snackbar.make(view, "Shoe size is empty or not a number or size less than 0.0 or equal to 0.0", Snackbar.LENGTH_LONG)
                 .setAction("Action", null)
                 .show()
             return
@@ -75,19 +92,15 @@ class DetailedShoeFragment : Fragment() {
         }
 
         val shoe = Shoe(shoeName, size, company, description)
-
+        viewModel.addShoe(shoe)
         view.findNavController().navigate(
-            DetailedShoeFragmentDirections.actionDetailedShoeFragmentToShoeListFragment(
-                shoe
-            )
+            DetailedShoeFragmentDirections.actionDetailedShoeFragmentToShoeListFragment()
         )
     }
 
     private fun cancelAddingShoe(view: View) {
         view.findNavController().navigate(
-            DetailedShoeFragmentDirections.actionDetailedShoeFragmentToShoeListFragment(
-                null
-            )
+            DetailedShoeFragmentDirections.actionDetailedShoeFragmentToShoeListFragment()
         )
     }
 }

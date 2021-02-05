@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="ec615bb5-8bb6-4dd7-8371-efcf7c4441b8" name="Default Changelist" comment="" />
+    <list default="true" id="ec615bb5-8bb6-4dd7-8371-efcf7c4441b8" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -18,6 +21,9 @@
         </projects_view>
       </state>
     </system>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1o1QiFXfvqZAzS7bASE5UwZqqQS" />
   <component name="ProjectViewState">
@@ -103,10 +109,10 @@
       <screen x="0" y="0" width="1792" height="1120" />
     </state>
     <state x="577" y="143" key="#Unnamed/0.0.1792.1120@0.0.1792.1120" timestamp="1612452086457" />
-    <state x="360" y="219" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1612454557016">
+    <state x="360" y="219" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1612467410995">
       <screen x="0" y="0" width="1792" height="1120" />
     </state>
-    <state x="360" y="219" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1792.1120@0.0.1792.1120" timestamp="1612454557016" />
+    <state x="360" y="219" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1792.1120@0.0.1792.1120" timestamp="1612467410995" />
     <state x="588" y="315" width="615" height="490" key="find.popup" timestamp="1612454631049">
       <screen x="0" y="0" width="1792" height="1120" />
     </state>

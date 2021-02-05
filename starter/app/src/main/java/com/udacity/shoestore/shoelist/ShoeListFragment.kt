@@ -11,6 +11,7 @@ import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
@@ -25,7 +26,7 @@ class ShoeListFragment : Fragment() {
 
     private lateinit var binding: FragmentShoeListBinding
 
-    private lateinit var viewModel: ShoeListViewModel
+    private val viewModel: ShoeListViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -35,11 +36,6 @@ class ShoeListFragment : Fragment() {
 
         binding = DataBindingUtil.inflate(inflater,
             R.layout.fragment_shoe_list, container, false)
-
-        viewModel = ViewModelProvider(this).get(ShoeListViewModel::class.java)
-
-        val shoeListFragmentArgs by navArgs<ShoeListFragmentArgs>()
-        val addedShoe = shoeListFragmentArgs.shoe
 
         binding.lifecycleOwner = this
 
@@ -52,11 +48,6 @@ class ShoeListFragment : Fragment() {
                 addShoeFullCard(shoe)
             }
         })
-
-        val isNotShoeAdded = viewModel.isNotShoeAdded.value
-        if (addedShoe != null && isNotShoeAdded != null && isNotShoeAdded) {
-            viewModel.addShoe(addedShoe)
-        }
 
         setHasOptionsMenu(true)
         return binding.root
