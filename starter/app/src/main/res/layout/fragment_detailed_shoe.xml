@@ -9,6 +9,7 @@
             type="com.udacity.shoestore.models.Shoe" />
     </data>
 
+    <!-- ConstraintLayout used there cause with it easy layout a large number of views -->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"

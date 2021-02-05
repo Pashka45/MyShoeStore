@@ -13,6 +13,7 @@
         android:paddingEnd="20dp"
         tools:context=".shoelist.ShoeListFragment">
 
+        <!-- LinearLayout used here cause it useful to layout items by columns -->
             <LinearLayout
                 android:id="@+id/shoeListContainer"
                 android:layout_width="match_parent"

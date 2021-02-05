@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <!-- ConstraintLayout used there cause with it easy layout a large number of views -->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/logoutFragment"
         android:layout_width="match_parent"

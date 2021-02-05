@@ -2,6 +2,7 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <!-- LinearLayout used here cause it useful to layout items by columns -->
     <LinearLayout
         style="@style/fragment_with_text"
         android:layout_width="match_parent"
