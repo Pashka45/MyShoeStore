@@ -24,6 +24,8 @@ class DetailedShoeFragment : Fragment() {
 
     private val viewModel: ShoeListViewModel by activityViewModels()
 
+    private val shoe = Shoe("", 0.0, "", "")
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -38,7 +40,7 @@ class DetailedShoeFragment : Fragment() {
 
         binding.lifecycleOwner = this
 
-        binding.shoe = Shoe("", 0.0, "", "")
+        binding.shoe = shoe
 
         binding.addBtn.setOnClickListener {
             addShoe(it)
@@ -52,8 +54,7 @@ class DetailedShoeFragment : Fragment() {
     }
 
     private fun addShoe(view: View) {
-        val shoeName: String = binding.shoeNameEdit.text.toString()
-
+        val shoeName = shoe.name
         if (shoeName.isEmpty()) {
             Snackbar.make(view, "Shoe name is empty. Please write it", Snackbar.LENGTH_LONG)
                 .setAction("Action", null)
@@ -61,15 +62,15 @@ class DetailedShoeFragment : Fragment() {
             return
         }
 
-        val size = binding.shoeSizeBtn.text.toString().toDoubleOrNull()
-        if (size == null || size <= 0.0) {
+        val size = shoe.size
+        if (size <= 0.0) {
             Snackbar.make(view, "Shoe size is empty or not a number or size less than 0.0 or equal to 0.0", Snackbar.LENGTH_LONG)
                 .setAction("Action", null)
                 .show()
             return
         }
 
-        val company = binding.shoeCompanyEdit.text.toString()
+        val company = shoe.company
         if (company.isEmpty()) {
             Snackbar.make(view, "Shoe company is empty", Snackbar.LENGTH_LONG)
                 .setAction("Action", null)
@@ -77,7 +78,7 @@ class DetailedShoeFragment : Fragment() {
             return
         }
 
-        val description = binding.shoeDescriptionEdit.text.toString()
+        val description = shoe.description
         if (description.isEmpty()) {
             Snackbar.make(view, "Shoe description is empty", Snackbar.LENGTH_LONG)
                 .setAction("Action", null)
@@ -85,7 +86,6 @@ class DetailedShoeFragment : Fragment() {
             return
         }
 
-        val shoe = Shoe(shoeName, size, company, description)
         viewModel.addShoe(shoe)
         view.findNavController().navigate(
             DetailedShoeFragmentDirections.actionDetailedShoeFragmentToShoeListFragment()
